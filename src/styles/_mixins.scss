@@ -5,7 +5,8 @@
 }
 
 @mixin tagStyle($color-bg, $color-text) {
-    background-color: $color-bg;
-    border-radius: 5px;
-    padding: 5px 10px;
+  background-color: $color-bg;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: $color-text;
 }

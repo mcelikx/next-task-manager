@@ -4,11 +4,17 @@ import { Button, Form, Input, Select } from 'antd'
 const { Option } = Select
 import { PRIORITY_OPTIONS } from '../../constants/contants'
 import PlusOutlined from '@ant-design/icons/PlusOutlined'
+import useCreateJob from "../../hooks/useCreateJob";
 const CreateJob = (props) => {
+
+  const {
+    handleCreateJob,
+  } = useCreateJob()
   const [form] = Form.useForm()
 
   const onFinish = (values) => {
     console.log(values)
+    handleCreateJob(values)
   }
   return (
     // Job Form. This form will be used to create a new job. Job Name and Job Priority are required fields.
@@ -22,7 +28,7 @@ const CreateJob = (props) => {
         <h4>Create New Job</h4>
         <div className={styles.createJobForm}>
           <Form.Item
-            name="jobName"
+            name="name"
             label="Job Name"
             rules={[
               {
@@ -33,7 +39,7 @@ const CreateJob = (props) => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="jobPriority"
+            name="priority"
             label="Job Priority"
             rules={[
               {

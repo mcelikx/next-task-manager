@@ -1,19 +1,66 @@
-@import "src/styles/variables";
-@import "src/styles/mixins";
-.root{
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+.root {
 }
 
-.tagWrapper{
-    min-width: 50px;
-}
-.urgent{
-    @include tagStyle($color-bg-urgent, white);
+.searchAndFilter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+    @include desktop() {
+        flex-direction: row;
+    }
 }
 
-.regular{
-    @include tagStyle($color-bg-regular, white);
+.priorityFilter{
+  width: 100%;
+    @include desktop() {
+        width: 25%;
+    }
 }
 
-.trivial{
-    @include tagStyle($color-bg-trivial, white);
+.tagWrapper {
+  min-width: 50px;
+}
+.urgent {
+  @include tagStyle($color-bg-urgent, white);
+}
+
+.regular {
+  @include tagStyle($color-bg-regular, white);
+}
+
+.trivial {
+  @include tagStyle($color-bg-trivial, white);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton {
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.deleteButton{
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+.clearButton {
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+
 }
