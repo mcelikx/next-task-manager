@@ -1,2 +1,19 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
 .root{
+}
+
+.tagWrapper{
+    min-width: 50px;
+}
+.urgent{
+    @include tagStyle($color-bg-urgent, white);
+}
+
+.regular{
+    @include tagStyle($color-bg-regular, white);
+}
+
+.trivial{
+    @include tagStyle($color-bg-trivial, white);
 }
