@@ -1,0 +1,38 @@
+@import "src/styles/variables";
+.title{
+  text-align: center;
+}
+.modalActions{
+  display: flex;
+  gap: 20px;
+    justify-content: center;
+  align-items: center;
+}
+
+.cancelButton{
+  justify-content: center;
+  background-color: $color-bg-gray;
+  color: $color-text-gray;
+  padding: 10px 50px;
+  border-radius: 5px;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.submitButton{
+  justify-content: center;
+  background-color: $color-bg-urgent;
+  color: white;
+  padding: 10px 50px;
+  border-radius: 5px;
+  border: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.question{
+  text-align: center;
+}

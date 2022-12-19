@@ -6,7 +6,6 @@ const UseCreateJob = props => {
   const [jobs, setJobs] = useJobContext()
 
   const handleCreateJob = job => {
-    console.log(job)
     const newJob = {
       id: Date.now(),
       name: job.name,
@@ -17,7 +16,6 @@ const UseCreateJob = props => {
     setJobs([...jobs, newJob])
   }
 
-  console.log(jobs)
   return {
     handleCreateJob
   }

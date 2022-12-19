@@ -13,7 +13,6 @@ const CreateJob = (props) => {
   const [form] = Form.useForm()
 
   const onFinish = (values) => {
-    console.log(values)
     handleCreateJob(values)
   }
   return (

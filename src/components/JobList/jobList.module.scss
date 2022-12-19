@@ -3,23 +3,23 @@
 .root {
 }
 
-.searchAndFilter{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px;
-    @include desktop() {
-        flex-direction: row;
-    }
+.searchAndFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px;
+  @include desktop() {
+    flex-direction: row;
+  }
 }
 
-.priorityFilter{
+.priorityFilter {
   width: 100%;
-    @include desktop() {
-        width: 25%;
-    }
+  @include desktop() {
+    width: 25%;
+  }
 }
 
 .tagWrapper {
@@ -49,12 +49,11 @@
   }
 }
 
-.deleteButton{
+.deleteButton {
   height: 30px;
   &:hover {
     cursor: pointer;
   }
-
 }
 
 .clearButton {
@@ -62,5 +61,4 @@
   &:hover {
     cursor: pointer;
   }
-
 }

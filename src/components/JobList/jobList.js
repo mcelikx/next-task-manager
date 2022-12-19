@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import styles from './jobList.module.scss'
-import {Input, Select, Table} from 'antd'
+import {Button, Form, Input, Modal, Select, Table} from 'antd'
 import { useJobContext } from '../../contexts/jobContext'
 import { PRIORITY_OPTIONS } from '../../constants/contants'
 import {DeleteOutlined, EditOutlined, SearchOutlined} from "@ant-design/icons";
-import useJobList from "../../hooks/useJobList";
+import useJobList from "../../hooks/useJobs";
+import EditModal from "../EditModal";
+import DeleteModal from "../DeleteModal";
 const JobList = props => {
 
   const {
@@ -15,8 +17,10 @@ const JobList = props => {
   } = useJobList()
 
   const [searchText, setSearchText] = useState('')
-
   const [filteredPriority, setFilteredPriority] = useState('')
+
+  const [editJob, setEditJob] = useState(null)
+  const [deleteJob, setDeleteJob] = useState(null)
 
   const columns = [
     {
@@ -59,7 +63,8 @@ const JobList = props => {
           </div>
         )
       },
-      width: '30%',
+      ellipsis: true,
+      width: 100,
     },
     {
       title: 'Action',
@@ -68,18 +73,19 @@ const JobList = props => {
         <div className={styles.actions}>
           <button
             className={styles.editButton}
-            onClick={() => handleEditJob(record.id)}
+            onClick={() => setEditJob(record)}
           >
             <EditOutlined />
           </button>
           <button
             className={styles.deleteButton}
-            onClick={() => handleDeleteJob(record.id)}
+            onClick={() => setDeleteJob(record)}
           >
             <DeleteOutlined />
           </button>
         </div>
       ),
+      ellipsis: true,
       width: 100,
     },
   ]
@@ -88,9 +94,7 @@ const JobList = props => {
   return (
     <div className={styles.root}>
       <h4>Job List</h4>
-      <div
-        className={styles.searchAndFilter}
-      >
+      <div className={styles.searchAndFilter}>
         <Input
           placeholder="Search by name"
           prefix={<SearchOutlined />}
@@ -101,33 +105,35 @@ const JobList = props => {
           onChange={(value) => setFilteredPriority(value)}
           defaultValue=""
         >
-          <Select.Option
-            value=""
-            key=""
-          >
+          <Select.Option value="" key="">
             Priority (All)
           </Select.Option>
           {PRIORITY_OPTIONS.map((option) => (
-            <Select.Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select.Option key={option.value} value={option.value}>
               {option.label}
             </Select.Option>
           ))}
         </Select>
       </div>
-      <Table
-        columns={columns}
-        dataSource={jobs}
-      />
+      <Table scroll={
+        {x: 500}
+      } columns={columns} dataSource={jobs} />
 
-      <button
-        className={styles.clearButton}
-        onClick={() => handleClearJobs()}
-      >
+      <button className={styles.clearButton} onClick={() => handleClearJobs()}>
         Start From Stratch
       </button>
+      {editJob && (
+        <EditModal
+          setEditJob={setEditJob}
+          editJob={editJob}
+        />
+      )}
+      {deleteJob && (
+        <DeleteModal
+          deleteJob={deleteJob}
+          setDeleteJob={setDeleteJob}
+        />
+      )}
     </div>
   )
 }
