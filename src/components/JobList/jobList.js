@@ -1,20 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styles from './jobList.module.scss'
-import {Button, Form, Input, Modal, Select, Table} from 'antd'
+import { Button, Form, Input, Modal, Select, Table } from 'antd'
 import { useJobContext } from '../../contexts/jobContext'
 import { PRIORITY_OPTIONS } from '../../constants/contants'
-import {DeleteOutlined, EditOutlined, SearchOutlined} from "@ant-design/icons";
-import useJobList from "../../hooks/useJobs";
-import EditModal from "../EditModal";
-import DeleteModal from "../DeleteModal";
-const JobList = props => {
-
-  const {
-    jobs,
-    handleDeleteJob,
-    handleEditJob,
-    handleClearJobs
-  } = useJobList()
+import { DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons'
+import useJobList from '../../hooks/useJobs'
+import EditModal from '../EditModal'
+import DeleteModal from '../DeleteModal'
+const JobList = (props) => {
+  const { jobs, handleDeleteJob, handleEditJob, handleClearJobs } = useJobList()
 
   const [searchText, setSearchText] = useState('')
   const [filteredPriority, setFilteredPriority] = useState('')
@@ -27,7 +21,8 @@ const JobList = props => {
       title: 'Name',
       dataIndex: 'name',
       filteredValue: [searchText],
-      onFilter: (value, record) => record.name.toLowerCase().includes(value.toLowerCase()),
+      onFilter: (value, record) =>
+        record.name.toLowerCase().includes(value.toLowerCase()),
       // specify the condition of filtering result
       // here is that finding the name started with `value`
       sorter: (a, b) => a.name.length - b.name.length,
@@ -42,7 +37,9 @@ const JobList = props => {
       filteredValue: [filteredPriority],
       onFilter: (value, record) => record.priority.includes(value),
       // sort field by corresponding PRIORITY_OPTIONS order
-      sorter: (a, b) => PRIORITY_OPTIONS.find((option) => option.value === a.priority).order - PRIORITY_OPTIONS.find((option) => option.value === b.priority).order,
+      sorter: (a, b) =>
+        PRIORITY_OPTIONS.find((option) => option.value === a.priority).order -
+        PRIORITY_OPTIONS.find((option) => option.value === b.priority).order,
       // sorter: (a, b) => a.value - b.value,
       render: (priority) => {
         const priorityOption = PRIORITY_OPTIONS.find(
@@ -54,8 +51,8 @@ const JobList = props => {
           priorityOption.value === 'urgent'
             ? styles.urgent
             : priorityOption.value === 'regular'
-              ? styles.regular
-              : styles.trivial
+            ? styles.regular
+            : styles.trivial
 
         return (
           <div className={styles.tagWrapper}>
@@ -90,7 +87,6 @@ const JobList = props => {
     },
   ]
 
-
   return (
     <div className={styles.root}>
       <h4>Job List</h4>
@@ -115,24 +111,14 @@ const JobList = props => {
           ))}
         </Select>
       </div>
-      <Table scroll={
-        {x: 500}
-      } columns={columns} dataSource={jobs} />
+      <Table scroll={{ x: 500 }} columns={columns} dataSource={jobs} />
 
       <button className={styles.clearButton} onClick={() => handleClearJobs()}>
         Start From Stratch
       </button>
-      {editJob && (
-        <EditModal
-          setEditJob={setEditJob}
-          editJob={editJob}
-        />
-      )}
+      {editJob && <EditModal setEditJob={setEditJob} editJob={editJob} />}
       {deleteJob && (
-        <DeleteModal
-          deleteJob={deleteJob}
-          setDeleteJob={setDeleteJob}
-        />
+        <DeleteModal deleteJob={deleteJob} setDeleteJob={setDeleteJob} />
       )}
     </div>
   )

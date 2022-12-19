@@ -1,8 +1,8 @@
-import {createContext, useContext, useEffect, useState} from "react";
-const JobContext = createContext();
+import { createContext, useContext, useEffect, useState } from 'react'
+const JobContext = createContext()
 
-const JobContextProvider = props => {
-  const { children } = props;
+const JobContextProvider = (props) => {
+  const { children } = props
   const [jobs, setJobs] = useState([])
 
   useEffect(() => {
@@ -12,8 +12,8 @@ const JobContextProvider = props => {
       setJobs(JSON.parse(localStorage.getItem('jobs')))
     } else {
       fetch('http://54.144.76.108/tasks')
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           localStorage.setItem('jobs', JSON.stringify(data))
           setJobs(data)
         })
@@ -27,6 +27,6 @@ const JobContextProvider = props => {
   )
 }
 
-export default JobContextProvider;
+export default JobContextProvider
 
-export const useJobContext = () => useContext(JobContext);
+export const useJobContext = () => useContext(JobContext)

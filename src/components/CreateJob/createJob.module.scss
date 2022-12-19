@@ -1,12 +1,11 @@
 @import 'src/styles/mixins';
 @import 'src/styles/variables';
 
-.root{
-
+.root {
 }
 
-.createJobForm{
-  @include desktop(){
+.createJobForm {
+  @include desktop() {
     display: grid;
     grid-template-columns: 9fr 2fr 1fr;
     gap: 10px;
@@ -15,6 +14,6 @@
   }
 }
 
-.submitButton{
+.submitButton {
   width: 100%;
 }

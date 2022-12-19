@@ -1,24 +1,25 @@
-import React from "react";
-import {useJobContext} from "../contexts/jobContext";
-import { PRIORITY_OPTIONS} from "../constants/contants";
+import React from 'react'
+import { useJobContext } from '../contexts/jobContext'
+import { PRIORITY_OPTIONS } from '../constants/contants'
 
-const UseCreateJob = props => {
+const UseCreateJob = (props) => {
   const [jobs, setJobs] = useJobContext()
 
-  const handleCreateJob = job => {
+  const handleCreateJob = (job) => {
     const newJob = {
       id: Date.now(),
       name: job.name,
       priority: job.priority,
-      order: PRIORITY_OPTIONS.find((option) => option.value === job.priority).order
+      order: PRIORITY_OPTIONS.find((option) => option.value === job.priority)
+        .order,
     }
     localStorage.setItem('jobs', JSON.stringify([newJob, ...jobs]))
     setJobs([...jobs, newJob])
   }
 
   return {
-    handleCreateJob
+    handleCreateJob,
   }
 }
 
-export default UseCreateJob;
+export default UseCreateJob

@@ -3,7 +3,7 @@ import { Button, Form, Input, Modal, Select } from 'antd'
 import { PRIORITY_OPTIONS } from '../../constants/contants'
 import styles from './deleteModal.module.scss'
 import UseJobs from '../../hooks/useJobs'
-import {WarningOutlined} from "@ant-design/icons";
+import { WarningOutlined } from '@ant-design/icons'
 
 const DeleteModal = (props) => {
   const { deleteJob, setDeleteJob } = props

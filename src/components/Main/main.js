@@ -5,8 +5,7 @@ import CreateJob from '../CreateJob'
 import JobList from '../JobList'
 import JobContextProvider from '../../contexts/jobContext'
 
-const Main = props => {
-
+const Main = (props) => {
   return (
     <JobContextProvider>
       <div className={styles.root}>

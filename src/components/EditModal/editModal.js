@@ -4,7 +4,7 @@ import { PRIORITY_OPTIONS } from '../../constants/contants'
 import styles from './editModal.module.scss'
 import UseJobs from '../../hooks/useJobs'
 
-const EditModal = props => {
+const EditModal = (props) => {
   const { editJob, setEditJob } = props
   console.log(editJob)
   const { handleEditJob } = UseJobs()

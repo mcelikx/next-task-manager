@@ -4,12 +4,9 @@ import { Button, Form, Input, Select } from 'antd'
 const { Option } = Select
 import { PRIORITY_OPTIONS } from '../../constants/contants'
 import PlusOutlined from '@ant-design/icons/PlusOutlined'
-import useCreateJob from "../../hooks/useCreateJob";
+import useCreateJob from '../../hooks/useCreateJob'
 const CreateJob = (props) => {
-
-  const {
-    handleCreateJob,
-  } = useCreateJob()
+  const { handleCreateJob } = useCreateJob()
   const [form] = Form.useForm()
 
   const onFinish = (values) => {
@@ -46,12 +43,12 @@ const CreateJob = (props) => {
               },
             ]}
           >
-            <Select
-              placeholder="Select priority"
-            >
+            <Select placeholder="Select priority">
               {PRIORITY_OPTIONS.map((priority, index) => {
                 return (
-                  <Option key={index} value={priority.value}>{priority.label}</Option>
+                  <Option key={index} value={priority.value}>
+                    {priority.label}
+                  </Option>
                 )
               })}
             </Select>

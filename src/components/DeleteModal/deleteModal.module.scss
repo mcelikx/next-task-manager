@@ -1,38 +1,38 @@
-@import "src/styles/variables";
-.title{
+@import 'src/styles/variables';
+.title {
   text-align: center;
 }
-.modalActions{
+.modalActions {
   display: flex;
   gap: 20px;
-    justify-content: center;
+  justify-content: center;
   align-items: center;
 }
 
-.cancelButton{
+.cancelButton {
   justify-content: center;
   background-color: $color-bg-gray;
   color: $color-text-gray;
   padding: 10px 50px;
   border-radius: 5px;
   border: none;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }
 
-.submitButton{
+.submitButton {
   justify-content: center;
   background-color: $color-bg-urgent;
   color: white;
   padding: 10px 50px;
   border-radius: 5px;
   border: none;
-    &:hover{
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.question{
+.question {
   text-align: center;
 }
