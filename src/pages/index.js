@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Rise Technology & Consulting</title>
-        <meta name="description" content="Rise Technology & Consulting" />
+        <title>Muhammed Çelik</title>
+        <meta name="description" content="Muhammed Çelik" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
